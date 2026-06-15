@@ -1,9 +1,9 @@
-const { Router } = require('express');
+import { Router } from "express";
+import routerAuth from "../modules/auth/routes.js";
 
 const router = Router();
 
-router.get('/health', (req, res) => {
-  res.json({ status: 'ok', service: 'renta-api' });
-});
+// Auth Routes (register/login públicos, /me protegido dentro del módulo)
+router.use("/auth", routerAuth);
 
-module.exports = router;
+export default router;
